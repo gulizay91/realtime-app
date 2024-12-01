@@ -17,6 +17,7 @@
       "applicationUrl": "http://localhost:5031",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
+        "ORLEANS_SILO_ADDRESS": "realtime-silo-host",
         "Services__TwilioService__AccountSID": "<Services__TwilioService__AccountSID>",
         "Services__TwilioService__AuthToken": "<Services__TwilioService__AuthToken>",
         "Services__TwilioService__PhoneNumber": "<Services__TwilioService__PhoneNumber>"
@@ -29,6 +30,7 @@
       "applicationUrl": "https://localhost:7222;http://localhost:5031",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
+        "ORLEANS_SILO_ADDRESS": "realtime-silo-host",
         "Services__TwilioService__AccountSID": "<Services__TwilioService__AccountSID>",
         "Services__TwilioService__AuthToken": "<Services__TwilioService__AuthToken>",
         "Services__TwilioService__PhoneNumber": "<Services__TwilioService__PhoneNumber>"
@@ -41,6 +43,7 @@
       "applicationUrl": "http://localhost:5031",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production",
+        "ORLEANS_SILO_ADDRESS": "realtime-silo-host",
         "Services__TwilioService__AccountSID": "<Services__TwilioService__AccountSID>",
         "Services__TwilioService__AuthToken": "<Services__TwilioService__AuthToken>",
         "Services__TwilioService__PhoneNumber": "<Services__TwilioService__PhoneNumber>"
@@ -50,7 +53,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ORLEANS_SILO_ADDRESS": "realtime-silo-host"
       }
     }
   }

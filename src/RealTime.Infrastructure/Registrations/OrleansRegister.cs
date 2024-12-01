@@ -13,7 +13,7 @@ public static class OrleansRegister
       siloBuilder.Configure<ClusterOptions>(options =>
       {
         options.ClusterId = "realtime-silo-cluster";
-        options.ServiceId = "realtime-silo";
+        options.ServiceId = "realtime-silo-host";
       });
       siloBuilder.AddMemoryGrainStorageAsDefault();
     });

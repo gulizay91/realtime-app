@@ -1,0 +1,35 @@
+﻿services:
+  realtime.api:
+    image: realtime.api
+    depends_on:
+      - realtime.silo
+    build:
+      context: .
+      dockerfile: src/RealTime.API/Dockerfile
+    ports:
+      - "5031:5031"
+    environment:
+      - ORLEANS_SILO_ADDRESS=172.18.0.2
+    networks:
+      - realtime-app-network
+
+  realtime.silo:
+    image: realtime.silo
+    build:
+      context: .
+      dockerfile: src/RealTime.Silo/Dockerfile
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z ${ORLEANS_SILO_ADDRESS:-172.18.0.2} 30000 || exit 1" ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    ports:
+      - "30000:30000"
+      - "8080:8080"
+    networks:
+      - realtime-app-network
+        
+networks:
+  realtime-app-network:
+    driver: bridge
+    name: realtime-app-network

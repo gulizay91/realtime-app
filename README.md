@@ -19,8 +19,14 @@
 ### build docker image
 ```sh
 # /realtime-app>
-docker build -f src/RealTime.API/Dockerfile -t realtime-app .
-docker run --rm --name realtime-app -p 8080:8080 -e ASPNETCORE_ENVIRONMENT=Development -d realtime-app
+docker build -f src/RealTime.Silo/Dockerfile -t realtime-silo .
+docker run --rm --name realtime-silo -p 30000:30000 -p 8080:8080 -d realtime-silo
+
+docker build -f src/RealTime.API/Dockerfile -t realtime-api .
+docker run --rm --name realtime-api -p 5031:5031 -e ASPNETCORE_ENVIRONMENT=Development -e ORLEANS_SILO_ADDRESS=realtime-silo-host -d realtime-api
+
+docker-compose -p realtime-app up
+docker-compose -p realtime-app down --volumes --remove-orphans
 ```
 or you can use phony target
 ```sh
